@@ -69,17 +69,16 @@
 	
 	<v-row>
 		<v-col cols="12" md="3">
-			<v-container>
-				<v-card>
-				로그인 창
-				</v-card>
+			<v-container v-if="user">
+				<LoginForm></LoginForm>
+			</v-container>
+			<v-container v-if="user">
+				<LogoutForm></LogoutForm>
 			</v-container>
 		</v-col>
 		<v-col cols="12" md="6">
 			<v-container>
-				<v-card>
-					메인 창
-				</v-card>
+				<Nuxt />
 			</v-container>
 		</v-col>
 		<v-col cols="12" md="3">
@@ -94,6 +93,9 @@
 </template>
 
 <script>
+	import LoginForm from "~/components/LoginForm"
+	import LogoutForm from "~/components/LogoutForm"
+	
 export default {
 	data(){
 		return{
@@ -101,9 +103,14 @@ export default {
 			message:'mdi-message-outline',
 			signup:'mdi-account-plus-outline',
 			login:'mdi-login',
-			logout:'mdi-logout'
+			logout:'mdi-logout',
+			user:true,
 		}
 	},
+	components:{
+		LoginForm,
+		LogoutForm
+	}
 }
 </script>
 
