@@ -42,6 +42,16 @@
 			</v-btn>
 		</v-container>
 	</div>
+	
+	<v-container>
+		<v-pagination
+					  circle
+					  v-model="page"
+					  :length="15"
+					  :total-visible="5"
+					  >
+		</v-pagination>
+	</v-container>
 </v-card>
 </template>
 
@@ -62,12 +72,21 @@ export default {
 					topic:`Rollin Rollin ~`,
 					id:3
 				},
-			]
+				{
+					topic:`First Project`,
+					id:4
+				},
+				{
+					topic:`I can do it`,
+					id:5
+				},
+			],
+			page:1,
 		}
 	},
 }
 </script>
 
-<style>
-
+<style scoped>
+	
 </style>

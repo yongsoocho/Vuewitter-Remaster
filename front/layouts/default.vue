@@ -2,7 +2,9 @@
 <v-app>
 	<div>
 		<v-toolbar dense dark color="blue">
-			<v-app-bar-nav-icon></v-app-bar-nav-icon>
+			<v-app-bar-nav-icon
+								@click.stop="drawer = !drawer"
+								></v-app-bar-nav-icon>
 			<v-toolbar-title>
 				<NuxtLink id="link" to="/" :style="{ display: 'flex', alignItems: 'center', margin:'0px 5px' }" class="white--text">
 					<v-icon :style="{ marginRight:'10px' }">mdi-twitter</v-icon>
@@ -30,7 +32,7 @@
 					<v-icon
 							:style="{ marginRight:'5px' }"
 							>
-						{{home}}</v-icon> home
+						mdi-home-outline</v-icon> home
 					</v-btn>
 				<v-btn 
 					   text
@@ -41,7 +43,7 @@
 					<v-icon
 							:style="{ marginRight:'5px' }"
 							>
-						{{profile}}</v-icon> my page
+						mdi-account-circle-outline</v-icon> my page
 					</v-btn>
 				<v-btn 
 					   text
@@ -52,7 +54,7 @@
 					<v-icon
 							:style="{ marginRight:'5px' }"
 							>
-						{{messages}}</v-icon> messages
+						mdi-message-outline</v-icon> messages
 					</v-btn>
 				<v-btn text
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
@@ -62,7 +64,7 @@
 					<v-icon
 							:style="{ marginRight:'5px' }"
 							>
-						{{signup}}</v-icon> sign up
+						mdi-account-plus-outline</v-icon> sign up
 					</v-btn>
 				<v-btn text
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
@@ -70,7 +72,7 @@
 					<v-icon
 							:style="{ marginRight:'5px' }"
 							>
-						{{login}}</v-icon> Log in
+						mdi-login</v-icon> Log in
 					</v-btn>
 				<v-btn text
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
@@ -78,10 +80,54 @@
 					<v-icon
 							:style="{ marginRight:'5px' }"
 							>
-						{{logout}}</v-icon> Log out
+						mdi-logout</v-icon> Log out
 					</v-btn>
 			</v-toolbar-items>
 		</v-toolbar>
+		
+		<v-navigation-drawer
+							 fixed
+							 temporary
+							 v-model="drawer"
+							 width="350"
+							 >
+			<v-list-item>
+				<v-list-item-avatar>
+					<v-img
+						   src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
+						   >
+					</v-img>
+				</v-list-item-avatar>
+			</v-list-item>
+			<v-list-item>
+				<v-list-content>
+					<v-list-item-title>
+						Cho yongsoo
+					</v-list-item-title>
+					<v-list-item-subtitle>
+						yongsoocho@naver.com
+					</v-list-item-subtitle>
+				</v-list-content>
+			</v-list-item>
+			
+			<v-container>
+				<v-divider></v-divider>
+			</v-container>
+			
+			<v-list-item-group>
+				<v-list-item
+							 v-for="option in Option" :key="option.id"
+							 color="blue"
+							 >
+					<v-list-item-icon>
+						<v-icon>{{option.icon}}</v-icon>
+					</v-list-item-icon>
+					<v-list-item-content>
+						{{option.content}}
+					</v-list-item-content>
+				</v-list-item>
+			</v-list-item-group>
+		</v-navigation-drawer>
 	</div>
 	
 	<v-row>
@@ -119,13 +165,26 @@
 export default {
 	data(){
 		return{
-			profile:'mdi-account-circle-outline',
-			messages:'mdi-message-outline',
-			signup:'mdi-account-plus-outline',
-			login:'mdi-login',
-			logout:'mdi-logout',
-			home:'mdi-home-outline',
 			user:true,
+			drawer: false,
+			Option:[
+				{
+					id:1,
+					icon:'mdi-facebook',
+					content:'Facebook'
+				},
+				{
+					id:2,
+					icon:'mdi-instagram',
+					content:'Instagram'
+				},
+				{
+					id:3,
+					icon:'mdi-snapchat',
+					content:'Snapchat'
+				},
+				
+			]
 		}
 	},
 	components:{
@@ -133,7 +192,9 @@ export default {
 		UserForm,
 		WhoToFollow,
 		News
-	}
+	},
+	watch: {
+    },
 }
 </script>
 
