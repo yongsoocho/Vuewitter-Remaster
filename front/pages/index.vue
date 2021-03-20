@@ -1,8 +1,6 @@
 <template>
 <div>
-	{{msg}}
-	<v-text-field>zz</v-text-field>
-	<v-textarea>z</v-textarea>
+	
 </div>
 </template>
 
