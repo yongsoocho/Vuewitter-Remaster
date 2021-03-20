@@ -5,7 +5,7 @@
 				 avatar
 				 bordered
 				 overlap
-				 color="green accent-2"
+				 color="green accent-3"
 				 >
 			<v-avatar
 					  color="warning lighten-2"
@@ -36,50 +36,58 @@
 	</v-container>
 	
 	<v-card-text>
-		<v-container>
+		<v-container
+					 :style="{ display:'flex', justifyContent:'center' }"
+					 >
 			<v-btn-toggle
 						  color="blue"
 						  :borderless=true
 						  >
-				<v-btn
-					   text
-					   >
-					<div>
-						<span
-							  class="blue--text"
-							  :style="{ display:'block', fontSize:'16px' }"
-						  >Tweets</span>
-						<span
-							  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
-							  >100</span>
-					</div>
-				</v-btn>
-				<v-btn
-					   text
-					   >
-					<div>
-						<span
-							  class="blue--text"
-							  :style="{ display:'block', fontSize:'16px' }"
-							  >Following</span>
-						<span
-							  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
-							  >923</span>
-					</div>
-				</v-btn>
-				<v-btn
-					   text
-					   >
-					<div>		
-						<span
-							  class="blue--text"
-							  :style="{ display:'block', fontSize:'16px' }"
-							  >Followers</span>
-						<span
-							  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
-							  >120</span>
-					</div>
-				</v-btn>
+				<div>
+					<v-btn
+						   text
+						   >
+						<div>
+							<span
+								  class="blue--text"
+								  :style="{ display:'block', fontSize:'16px' }"
+							  >Tweets</span>
+							<span
+								  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
+								  >100</span>
+						</div>
+					</v-btn>
+				</div>
+				<div>
+					<v-btn
+						   text
+						   >
+						<div>
+							<span
+								  class="blue--text"
+								  :style="{ display:'block', fontSize:'16px' }"
+								  >Following</span>
+							<span
+								  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
+								  >923</span>
+						</div>
+					</v-btn>
+				</div>
+				<div>
+					<v-btn
+						   text
+						   >
+						<div>		
+							<span
+								  class="blue--text"
+								  :style="{ display:'block', fontSize:'16px' }"
+								  >Followers</span>
+							<span
+								  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
+								  >120</span>
+						</div>
+					</v-btn>
+				</div>
 			</v-btn-toggle>
 		</v-container>
 	</v-card-text>

@@ -14,11 +14,18 @@
     "_name": "_1c29ba8b"
   },
   {
-    "name": "profile",
-    "path": "/profile",
-    "component": "/workspace/Vuewitter-Remaster/front/pages/profile.vue",
-    "chunkName": "pages/profile",
-    "_name": "_668449de"
+    "name": "messages",
+    "path": "/messages",
+    "component": "/workspace/Vuewitter-Remaster/front/pages/messages.vue",
+    "chunkName": "pages/messages",
+    "_name": "_390dfc94"
+  },
+  {
+    "name": "mypage",
+    "path": "/mypage",
+    "component": "/workspace/Vuewitter-Remaster/front/pages/mypage.vue",
+    "chunkName": "pages/mypage",
+    "_name": "_40869203"
   },
   {
     "name": "signup",

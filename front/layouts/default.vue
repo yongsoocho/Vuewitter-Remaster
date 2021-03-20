@@ -23,6 +23,19 @@
 				</v-text-field>
 				<v-btn 
 					   text
+					   nuxt
+					   to="/"
+					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
+					   >
+					<v-icon
+							:style="{ marginRight:'5px' }"
+							>
+						{{home}}</v-icon> home
+					</v-btn>
+				<v-btn 
+					   text
+					   nuxt
+					   to="/mypage"
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
 					   >
 					<v-icon
@@ -32,15 +45,19 @@
 					</v-btn>
 				<v-btn 
 					   text
+					   nuxt
+					   to="/messages"
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
 					   >
 					<v-icon
 							:style="{ marginRight:'5px' }"
 							>
-						{{message}}</v-icon> messages
+						{{messages}}</v-icon> messages
 					</v-btn>
 				<v-btn text
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
+					   nuxt
+					   to="/signup"
 					   >
 					<v-icon
 							:style="{ marginRight:'5px' }"
@@ -68,24 +85,25 @@
 	</div>
 	
 	<v-row>
-		<v-col cols="12" md="3">
+		<v-col cols="12" xl="3">
 			<v-container v-if="user">
 				<LoginForm></LoginForm>
 			</v-container>
 			<v-container v-if="user">
-				<LogoutForm></LogoutForm>
+				<UserForm></UserForm>
+			</v-container>
+				<v-container v-if="user">
+				<WhoToFollow></WhoToFollow>
 			</v-container>
 		</v-col>
-		<v-col cols="12" md="6">
+		<v-col cols="12" xl="6">
 			<v-container>
 				<Nuxt />
 			</v-container>
 		</v-col>
-		<v-col cols="12" md="3">
+		<v-col cols="12" xl="3">
 			<v-container>
-				<v-card>
-					친구 추천 광고
-				</v-card>
+				<News></News>
 			</v-container>
 		</v-col>
 	</v-row>
@@ -94,22 +112,27 @@
 
 <script>
 	import LoginForm from "~/components/LoginForm"
-	import LogoutForm from "~/components/LogoutForm"
+	import UserForm from "~/components/UserForm"
+	import WhoToFollow from "~/components/WhoToFollow"
+	import News from "~/components/News"
 	
 export default {
 	data(){
 		return{
 			profile:'mdi-account-circle-outline',
-			message:'mdi-message-outline',
+			messages:'mdi-message-outline',
 			signup:'mdi-account-plus-outline',
 			login:'mdi-login',
 			logout:'mdi-logout',
+			home:'mdi-home-outline',
 			user:true,
 		}
 	},
 	components:{
 		LoginForm,
-		LogoutForm
+		UserForm,
+		WhoToFollow,
+		News
 	}
 }
 </script>

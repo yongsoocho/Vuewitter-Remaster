@@ -6,7 +6,8 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _6c42a5b7 = () => interopDefault(import('../pages/admin.vue' /* webpackChunkName: "pages/admin" */))
 const _1c29ba8b = () => interopDefault(import('../pages/admin2.vue' /* webpackChunkName: "pages/admin2" */))
-const _668449de = () => interopDefault(import('../pages/profile.vue' /* webpackChunkName: "pages/profile" */))
+const _390dfc94 = () => interopDefault(import('../pages/messages.vue' /* webpackChunkName: "pages/messages" */))
+const _40869203 = () => interopDefault(import('../pages/mypage.vue' /* webpackChunkName: "pages/mypage" */))
 const _5184db40 = () => interopDefault(import('../pages/signup.vue' /* webpackChunkName: "pages/signup" */))
 const _d4fcc230 = () => interopDefault(import('../pages/user/yongsoo.vue' /* webpackChunkName: "pages/user/yongsoo" */))
 const _3ad351ba = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -31,9 +32,13 @@ export const routerOptions = {
     component: _1c29ba8b,
     name: "admin2"
   }, {
-    path: "/profile",
-    component: _668449de,
-    name: "profile"
+    path: "/messages",
+    component: _390dfc94,
+    name: "messages"
+  }, {
+    path: "/mypage",
+    component: _40869203,
+    name: "mypage"
   }, {
     path: "/signup",
     component: _5184db40,
