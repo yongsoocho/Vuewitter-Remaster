@@ -29,13 +29,6 @@
 				   color="blue-grey lighten-1"
 				   :style="{ width:'100%', margin:'5px 0px' }"
 				   >Sing up</v-btn>
-		
-			<v-btn
-				   v-if="user"
-				   dark
-				   color="blue lighten-1"
-				   :style="{ width:'100%', margin:'5px 0px' }"
-				   >Log out</v-btn>
 	</v-container>
 </v-card>
 </template>
@@ -45,7 +38,6 @@ export default {
 	data(){
 		return{
 			msg:'Hello Nuxt',
-			user: true
 		}
 	},
 }
