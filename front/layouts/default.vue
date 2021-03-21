@@ -39,6 +39,7 @@
 					   nuxt
 					   to="/mypage"
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
+					   v-if="me"
 					   >
 					<v-icon
 							:style="{ marginRight:'5px' }"
@@ -50,6 +51,7 @@
 					   nuxt
 					   to="/messages"
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
+					   v-if="me"
 					   >
 					<v-icon
 							:style="{ marginRight:'5px' }"
@@ -60,6 +62,7 @@
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
 					   nuxt
 					   to="/signup"
+					   v-if="!me"
 					   >
 					<v-icon
 							:style="{ marginRight:'5px' }"
@@ -68,6 +71,7 @@
 					</v-btn>
 				<v-btn text
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
+					   v-if="!me"
 					   >
 					<v-icon
 							:style="{ marginRight:'5px' }"
@@ -76,6 +80,8 @@
 					</v-btn>
 				<v-btn text
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
+					   v-if="me"
+					   @click="onLogOut"
 					   >
 					<v-icon
 							:style="{ marginRight:'5px' }"
@@ -136,13 +142,13 @@
 	
 	<v-row>
 		<v-col cols="12" xl="3">
-			<v-container v-if="user">
+			<v-container v-if="!me">
 				<LoginForm></LoginForm>
 			</v-container>
-			<v-container v-if="user">
+			<v-container v-if="me">
 				<UserForm></UserForm>
 			</v-container>
-				<v-container v-if="user">
+				<v-container v-if="me">
 				<WhoToFollow></WhoToFollow>
 			</v-container>
 		</v-col>
@@ -220,7 +226,6 @@
 export default {
 	data(){
 		return{
-			user:true,
 			drawer: false,
 			Option:[
 				{
@@ -249,8 +254,16 @@ export default {
 		WhoToFollow,
 		News
 	},
-	watch: {
+	computed: {
+		me() {
+			return this.$store.state.users.me;
+		}
     },
+	methods: {
+		onLogOut() {
+			this.$store.dispatch('users/logOut', {})
+		}
+	}
 }
 </script>
 

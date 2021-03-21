@@ -1,6 +1,6 @@
 <template>
 <div>
-	<PostTweet></PostTweet>
+	<PostTweet v-if="me"></PostTweet>
 	<Tweet></Tweet>
 </div>
 </template>
@@ -18,6 +18,11 @@ export default {
 	components:{
 		Tweet,
 		PostTweet,
+	},
+	computed:{
+		me() {
+			return this.$store.state.users.me;
+		}
 	}
 }
 </script>

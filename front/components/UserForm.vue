@@ -20,7 +20,7 @@
 		
 		<span
 			  :style="{ marginLeft:'10px', fontSize:'25px' }"
-			  >Hi! User
+			  >Hi! {{me.name}}
 		</span>
 	</v-card-title>
 	<v-card-subtitle>
@@ -98,9 +98,10 @@
 	
 	<v-card-actions>
 		<v-btn
-				   dark
-				   color="blue lighten-1"
-				   :style="{ width:'100%', margin:'5px 0px' }"
+			   dark
+			   color="blue lighten-1"
+			   :style="{ width:'100%', margin:'5px 0px' }"
+			   @click="onLogOut"
 				   >
 			Log out
 		</v-btn>
@@ -115,10 +116,19 @@ export default {
 			msg:'Hello Nuxt'
 		}
 	},
+	methods: {
+		onLogOut() {
+			this.$store.dispatch('users/logOut', {});
+		}
+	},
+	computed: {
+		me() {
+			return this.$store.state.users.me;
+		}
+	}
 }
 </script>
 
 <style>
-	h1{
-	}
+	
 </style>
