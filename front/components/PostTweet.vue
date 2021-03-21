@@ -63,8 +63,18 @@ export default {
 		onPostTweet() {
 			if(this.$refs.form.validate()){
 				this.$store.dispatch('posts/addMainPosts', {
+					id: Math.round(Math.random()*10000),
 					content: this.content,
-					author: this.me
+					author: this.me,
+					image:{},
+					createAt: new Date(),
+					updateAt: new Date(),
+				})
+				.then(() => {
+					this.$refs.form.reset();
+				})
+				.catch((err) => {
+					console.log(err);
 				})
 			}else{
 				this.$refs.form.reset();
@@ -74,7 +84,7 @@ export default {
 	computed: {
 		me() {
 			return this.$store.state.users.me;
-		}
+		},
 	}
 }
 </script>

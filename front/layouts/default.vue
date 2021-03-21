@@ -71,15 +71,6 @@
 					</v-btn>
 				<v-btn text
 					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
-					   v-if="!me"
-					   >
-					<v-icon
-							:style="{ marginRight:'5px' }"
-							>
-						mdi-login</v-icon> Log in
-					</v-btn>
-				<v-btn text
-					   :style="{ margin:'0px 10px', display: 'flex', alignItems: 'center' }"
 					   v-if="me"
 					   @click="onLogOut"
 					   >
@@ -245,7 +236,7 @@ export default {
 				},
 			],
 			Year : new Date().getFullYear(),
-			
+			dialog: false,
 		}
 	},
 	components:{
