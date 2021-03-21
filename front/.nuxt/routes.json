@@ -1,12 +1,5 @@
 [
   {
-    "name": "admin",
-    "path": "/admin",
-    "component": "/workspace/Vuewitter-Remaster/front/pages/admin.vue",
-    "chunkName": "pages/admin",
-    "_name": "_6c42a5b7"
-  },
-  {
     "name": "admin2",
     "path": "/admin2",
     "component": "/workspace/Vuewitter-Remaster/front/pages/admin2.vue",

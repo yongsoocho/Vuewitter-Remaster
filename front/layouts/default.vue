@@ -92,7 +92,9 @@
 							 width="350"
 							 >
 			<v-list-item>
-				<v-list-item-avatar>
+				<v-list-item-avatar
+									size="48"
+									>
 					<v-img
 						   src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
 						   >
@@ -101,7 +103,9 @@
 			</v-list-item>
 			<v-list-item>
 				<v-list-content>
-					<v-list-item-title>
+					<v-list-item-title
+									   :style="{ fontSize:'20px' }"
+									   >
 						Cho yongsoo
 					</v-list-item-title>
 					<v-list-item-subtitle>
@@ -153,6 +157,57 @@
 			</v-container>
 		</v-col>
 	</v-row>
+	
+	<v-row>
+		<v-col cols="12">
+			<v-footer color="primary lighten-1" padless>
+				<v-row>
+					<v-col 
+						   cols="12"
+						   :style="{ display:'flex', justifyContent:'center' }"
+						   >
+						<div>
+							<v-btn-toggle 
+										  borderless
+										  background-color="primary lighten-1"
+										  dark
+										  >
+								<v-btn text><v-icon>mdi-facebook</v-icon></v-btn>
+								<v-btn text><v-icon>mdi-instagram</v-icon></v-btn>
+								<v-btn text><v-icon>mdi-snapchat</v-icon></v-btn>
+							</v-btn-toggle>
+						</div>
+					</v-col>
+					<v-col cols="12">
+						<v-card 
+								flat
+								tile
+								class="primary lighten-1 text-center"
+								>
+							<v-card-text class="white--text">
+								Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+							</v-card-text>
+						</v-card>
+					</v-col>
+					
+					<v-divider>
+					</v-divider>
+					
+					<v-col cols="12">
+						<v-card
+								flat
+								tile
+								class="primary lighten-3 text-center"
+								>
+							<v-card-text class="white--text">
+								{{ Year }} — <strong>Vue Vuetify Nuxt Express Node.js</strong>
+							</v-card-text>
+						</v-card>
+					</v-col>
+				</v-row>
+			</v-footer>
+		</v-col>
+	</v-row>
 </v-app>
 </template>
 
@@ -183,8 +238,9 @@ export default {
 					icon:'mdi-snapchat',
 					content:'Snapchat'
 				},
-				
-			]
+			],
+			Year : new Date().getFullYear(),
+			
 		}
 	},
 	components:{

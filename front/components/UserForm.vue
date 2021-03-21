@@ -41,7 +41,7 @@
 					 >
 			<v-btn-toggle
 						  color="blue"
-						  :borderless=true
+						  borderless
 						  >
 				<div>
 					<v-btn
