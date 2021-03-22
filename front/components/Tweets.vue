@@ -47,12 +47,24 @@
 								color="blue"
 								>mdi-heart-outline</v-icon>
 					</v-btn>
-					<v-btn>
-						<v-icon
-								large
-								color="blue"
-								>mdi-comment-multiple-outline</v-icon>
-					</v-btn>
+					<v-menu
+							top
+							:close-on-click="true"
+							:close-on-content-click="true"
+							>
+						<template v-slot:activator="{ on, attrs }">
+							<v-btn
+								   v-bind="attrs"
+								   v-on="on"
+								   >
+								<v-icon
+										large
+										color="blue"
+										>mdi-comment-multiple-outline</v-icon>
+							</v-btn>
+						</template>
+						<CommentForm></CommentForm>
+					</v-menu>
 					<v-menu v-if="this.me === this.post.author">	
 						<template v-slot:activator="{ on, attrs }">
 							<v-btn>
@@ -85,6 +97,8 @@
 </template>
 
 <script>
+	import CommentForm from "~/components/CommentForm"
+	
 export default {
 	props: {
 		post: {
@@ -119,6 +133,9 @@ export default {
 			});
 		},
 	},
+	components:{
+		CommentForm,
+	}
 }
 </script>
 
