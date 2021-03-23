@@ -4,27 +4,39 @@ export const state = () => ({
 		password: '123',
 		name: 'C.yongsoo'
 	},
-	FollowersList:[
-		{name:'a', id:1}, 
-		{name:'b', id:2},
-		{name:'c', id:3},
-		{name:'d', id:4},
-		{name:'e', id:5}
-	],
-	FollowingList:[
-		{name:'z', id:6}, 
-		{name:'y', id:7}, 
-		{name:'x', id:8},
-		{name:'w', id:9},
-		{name:'q', id:10},
-	]
+	FollowersList:[],
+	FollowingList:[],
+	hasMoreFollowers: true,
+	hasMoreFollowing: true,
 });
+
+const totalFollowers = 14;
+const totalFollowing = 15;
+const limit = 3;
 
 export const mutations = {
 	SETME(state, payload) {
 		state.me = payload;
 		console.log(state.me);
-	}
+	},
+	LOADFOLLOWERS(state, payload) {
+		const diff = totalFollowers - state.FollowersList.length;
+		const fakeFollow = Array(diff > limit ? limit : diff).fill().map(v => ({
+			id: Math.round(Math.random()*10000),
+			name: String(Math.floor(Math.random()*10000))
+		}));
+		state.FollowersList = state.FollowersList.concat(fakeFollow);
+		state.hasMoreFollowers = fakeFollow.length === limit;
+	},
+	LOADFOLLOWING(state, payload) {
+		const diff = totalFollowing - state.FollowingList.length;
+		const fakeFollow = Array(diff > limit ? limit : diff).fill().map(v => ({
+			id: Math.round(Math.random()*10000),
+			name: String(Math.floor(Math.random()*10000))
+		}));
+		state.FollowingList = state.FollowingList.concat(fakeFollow);
+		state.hasMoreFollowing = fakeFollow.length === limit;
+	},
 };
 
 export const actions = {
@@ -36,5 +48,15 @@ export const actions = {
 	},
 	logOut({ commit }, payload) {
 		commit('SETME', null);
+	},
+	loadFollowers({ commit, state }, payload) {
+		if(state.hasMoreFollowers) {
+			commit('LOADFOLLOWERS');	
+		}
+	},
+	loadFollowing({ commit, state }, payload) {
+		if(state.hasMoreFollowing) {
+			commit('LOADFOLLOWING');
+		}
 	},
 }

@@ -1,7 +1,7 @@
 <template>
 <div>
 	<PostTweet v-if="me"></PostTweet>
-	<Tweets v-for="post in mainPosts" :key="post.id" :post="post" :me="me"></Tweets>
+	<Tweets v-for="post in mainPosts" :key="post.id" :post="post"></Tweets>
 </div>
 </template>
 

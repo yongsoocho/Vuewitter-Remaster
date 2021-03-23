@@ -35,62 +35,28 @@
 		<v-divider></v-divider>
 	</v-container>
 	
-	<v-card-text>
-		<v-container
-					 :style="{ display:'flex', justifyContent:'center' }"
-					 >
-			<v-btn-toggle
-						  color="blue"
-						  borderless
-						  >
-				<div>
-					<v-btn
-						   text
-						   >
-						<div>
-							<span
-								  class="blue--text"
-								  :style="{ display:'block', fontSize:'16px' }"
-							  >Tweets</span>
-							<span
-								  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
-								  >100</span>
-						</div>
-					</v-btn>
+	<v-container>
+		<v-row>
+			<v-col cols="4" lg="12" xl="4">
+				<div class="Link" @click="onClickMyPage">
+					<span class="blue--text" :style="{ display:'block', fontSize:'25px', fontWeigth:'700' }">Tweets</span>
+					<span class="black--text" :style="{ display:'block', fontSize:'20px', fontWeigth:'400' }">123</span>
 				</div>
-				<div>
-					<v-btn
-						   text
-						   >
-						<div>
-							<span
-								  class="blue--text"
-								  :style="{ display:'block', fontSize:'16px' }"
-								  >Following</span>
-							<span
-								  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
-								  >923</span>
-						</div>
-					</v-btn>
+			</v-col>
+			<v-col cols="4" lg="12" xl="4">
+				<div class="Link" @click="onClickMyPage">
+					<span class="blue--text" :style="{ display:'block', fontSize:'25px', fontWeigth:'700' }">Followers</span>
+					<span class="black--text" :style="{ display:'block', fontSize:'20px', fontWeigth:'400' }">789</span>
 				</div>
-				<div>
-					<v-btn
-						   text
-						   >
-						<div>		
-							<span
-								  class="blue--text"
-								  :style="{ display:'block', fontSize:'16px' }"
-								  >Followers</span>
-							<span
-								  :style="{ display:'block', marginTop:'5px', fontSize:'20px' }"
-								  >120</span>
-						</div>
-					</v-btn>
+			</v-col>
+			<v-col cols="4" lg="12" xl="4">
+				<div class="Link" @click="onClickMyPage">
+					<span class="blue--text" :style="{ display:'block', fontSize:'25px', fontWeigth:'700' }">Following</span>
+					<span class="black--text" :style="{ display:'block', fontSize:'20px', fontWeigth:'400' }">456</span>
 				</div>
-			</v-btn-toggle>
-		</v-container>
-	</v-card-text>
+			</v-col>
+		</v-row>
+	</v-container>
 	
 	<v-container>
 		<v-divider></v-divider>
@@ -119,7 +85,12 @@ export default {
 	methods: {
 		onLogOut() {
 			this.$store.dispatch('users/logOut', {});
-		}
+		},
+		onClickMyPage() {
+			return this.$router.push({
+				path:'/mypage'
+			})
+		},
 	},
 	computed: {
 		me() {
@@ -129,6 +100,15 @@ export default {
 }
 </script>
 
-<style>
-	
+<style scoped>
+	.Link {
+		display:flex;
+		align-items:center;
+		flex-direction:column;
+		border-radius:10px;
+	}
+	.Link:hover {
+		background-color:rgba(0, 0, 150, 0.1);
+		cursor:pointer;
+	}
 </style>

@@ -15,14 +15,17 @@
 			<v-spacer></v-spacer>
 			
 			<v-toolbar-items>
-				<v-text-field 
-							  prepend-inner-icon="mdi-magnify" 
-							  :style="{ width:'250px', marginTop:'5px' }"
-							  clearable
-							  label="Search Vuewitter"
-							  single-line
-							  >
-				</v-text-field>
+				<v-form @submit.prevent="onSearchHashTag">
+					<v-text-field 
+								  prepend-inner-icon="mdi-magnify" 
+								  :style="{ width:'250px', marginTop:'5px' }"
+								  clearable
+								  label="Search Vuewitter"
+								  single-line
+								  v-model="hashTagSearch"
+								  >
+					</v-text-field>
+				</v-form>
 				<v-btn 
 					   text
 					   nuxt
@@ -237,6 +240,7 @@ export default {
 			],
 			Year : new Date().getFullYear(),
 			dialog: false,
+			hashTagSearch:'',
 		}
 	},
 	components:{
@@ -253,7 +257,13 @@ export default {
 	methods: {
 		onLogOut() {
 			this.$store.dispatch('users/logOut', {})
-		}
+		},
+		onSearchHashTag() {
+			this.$router.push({
+				path:`/hashtag/${this.hashTagSearch}`
+			});
+			return this.hashTagSearch='';
+		},
 	}
 }
 </script>

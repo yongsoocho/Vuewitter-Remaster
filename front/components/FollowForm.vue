@@ -1,5 +1,5 @@
 <template>
-<v-card>
+<div>
 	<v-card-title>
 		{{FollowType.title}}
 	</v-card-title>
@@ -12,7 +12,7 @@
 		<v-list>
 			<v-col cols="4" v-for="f in FollowList" :key="f.id" :style="{ display:'inline-block' }">
 				<v-list-item>
-					<v-list-item-avatar size="36" dark color="blue">
+					<v-list-item-avatar size="36" color="blue">
 						{{f.name[0]}}
 					</v-list-item-avatar>
 					<v-list-item-content>
@@ -22,7 +22,7 @@
 			</v-col>
 		</v-list>
 	</v-card-text>
-</v-card>
+</div>
 </template>
 
 <script>

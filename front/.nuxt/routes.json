@@ -21,6 +21,13 @@
     "_name": "_5184db40"
   },
   {
+    "name": "hashtag-id",
+    "path": "/hashtag/:id",
+    "component": "/workspace/Vuewitter-Remaster/front/pages/hashtag/_id/index.vue",
+    "chunkName": "pages/hashtag/_id/index",
+    "_name": "_28744abc"
+  },
+  {
     "name": "post-id",
     "path": "/post/:id",
     "component": "/workspace/Vuewitter-Remaster/front/pages/post/_id/index.vue",
@@ -28,10 +35,18 @@
     "_name": "_68b207d6"
   },
   {
-    "name": "test-id",
     "path": "/test/:id?",
     "component": "/workspace/Vuewitter-Remaster/front/pages/test/_id.vue",
     "chunkName": "pages/test/_id",
+    "children": [
+      {
+        "name": "test-id",
+        "path": "",
+        "component": "/workspace/Vuewitter-Remaster/front/pages/test/_id/index.vue",
+        "chunkName": "pages/test/_id/index",
+        "_name": "_5456e448"
+      }
+    ],
     "_name": "_18015585"
   },
   {

@@ -4,6 +4,7 @@ export const state = () => ({
 			id: 24,
 			content: 'Test dummy Data~! haha',
 			author: {
+				id: 12345,
 				name:'ygr'
 			},
 			image:{},
@@ -51,7 +52,8 @@ export const mutations = {
 			id: Math.round(Math.random() * 10000),
 			content: String(Math.round(Math.random() * 10000)), // Knowledge about How create empty array
 			author: {
-				name:'ygr'
+				id: Math.round(Math.random() * 10000),
+				name:Math.round(Math.random() * 10000)
 			},
 			createAt: new Date(),
 			updateAt: new Date(),

@@ -3,6 +3,7 @@
 	<v-card :style="{ marginBottom:'30px' }">
 		<v-card-title>
 			<v-avatar
+					  @click="onRouteAuthor"
 					  color="warning lighten-2"
 					  size="48"
 					  >
@@ -12,6 +13,7 @@
 				</v-img>
 			</v-avatar>
 			<span
+				  @click="onRouteAuthor"
 				  :style="{ marginLeft:'10px', fontSize:'25px' }"
 				  >
 				{{post.author.name}}
@@ -111,10 +113,6 @@ export default {
 			type: Object,
 			required: true
 		},
-		me: {
-			type: Object,
-			required: true
-		}
 	},
 	data(){
 		return{
@@ -142,7 +140,13 @@ export default {
 			return this.$router.push({
 				path:`/post/${this.post.id}`
 			})
-		}
+		},
+		onRouteAuthor() {
+			console.log('hi');
+			return this.$router.push({
+				path:`/user/${this.post.author.id}`
+			})
+		},
 	},
 	components:{
 		CommentForm,
