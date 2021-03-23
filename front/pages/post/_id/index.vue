@@ -2,11 +2,11 @@
 <div>
 	<v-card v-if="post">
 		<v-card-title>
-			<v-avatar color="blue" size="100" :style="{ marginRight:'10px' }"></v-avatar>
+			<v-avatar color="blue" size="64" :style="{ marginRight:'10px' }"></v-avatar>
 			<span>{{post.author.name}}</span>
 		</v-card-title>
 		<v-card-subtitle>
-			<span :style="{ marginTop:'5px' }">{{post.createAt}}</span>
+			<span :style="{ marginTop:'10px' }">{{post.createAt}}</span>
 		</v-card-subtitle>
 		<v-divider></v-divider>
 		<v-card-text>
@@ -44,7 +44,7 @@
 						<span>{{p.author}}</span> 
 					</v-card-title>
 					<v-card-subtitle>
-						<span :style="{ marginTop:'5px' }">{{p.createAt}}</span>
+						<span :style="{ marginTop:'10px' }">{{p.createAt}}</span>
 					</v-card-subtitle>
 					<v-card-text>
 						{{p.comment}}

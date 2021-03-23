@@ -6,6 +6,8 @@ import NuxtError from './components/nuxt-error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
+import '../assets/main.css'
+
 import '../node_modules/vuetify/dist/vuetify.css'
 
 import _6f6c098b from '../layouts/default.vue'
@@ -26,7 +28,7 @@ export default {
 
     const transitionEl = h('transition', {
       props: {
-        name: 'layout',
+        name: 'my-layouts',
         mode: 'out-in'
       },
       on: {

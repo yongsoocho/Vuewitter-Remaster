@@ -25,7 +25,7 @@
 			<v-divider></v-divider>
 		</v-container>
 		
-		<v-card-text>
+		<v-card-text @click="onRouteTweetPage">
 			{{post.content}}
 		</v-card-text>
 		
@@ -138,6 +138,11 @@ export default {
 				console.log(err);
 			});
 		},
+		onRouteTweetPage() {
+			return this.$router.push({
+				path:`/post/${this.post.id}`
+			})
+		}
 	},
 	components:{
 		CommentForm,

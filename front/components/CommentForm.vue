@@ -43,6 +43,9 @@
 					</v-avatar>
 					{{p.author}}
 				</v-card-title>
+				<v-card-subtitle>
+					<span :style="{ marginTop:'10px' }">{{p.createAt}}</span>
+				</v-card-subtitle>
 				<v-card-text>
 					{{p.comment}}
 				</v-card-text>

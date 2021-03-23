@@ -22,8 +22,12 @@ export const state = () => ({
 				}
 			]
 		},
-	]
+	],
+	hasMorePost: true,
 });
+
+const totalPosts = 41;
+const limit = 10;
 
 export const mutations = {
 	ADDMAINPOSTS(state, payload) {
@@ -40,6 +44,32 @@ export const mutations = {
 			author:payload.author,
 			comment:payload.content
 		});
+	},
+	LOADPOSTS(state, payload) {
+		const diff = totalPosts - state.mainPosts.length;
+		const fakeArray = Array(diff > limit ? limit : diff).fill().map(v => ({
+			id: Math.round(Math.random() * 10000),
+			content: String(Math.round(Math.random() * 10000)), // Knowledge about How create empty array
+			author: {
+				name:'ygr'
+			},
+			createAt: new Date(),
+			updateAt: new Date(),
+			comments:[
+				{
+					author:'ygr',
+					comment:'123',
+					createAt: new Date(),
+				},
+				{
+					author:'ppp',
+					comment:'bye',
+					createAt: new Date(),
+				}
+			]
+		}));
+		state.mainPosts = state.mainPosts.concat(fakeArray);
+		state.hasMorePost = fakeArray.length === limit;
 	}
 };
 
@@ -52,5 +82,10 @@ export const actions = {
 	},
 	addComment({ commit }, payload) {
 		commit('ADDCOMMENT', payload);
+	},
+	loadPosts({ commit, state }, payload) {
+		if(state.hasMorePost) {
+			commit('LOADPOSTS', payload);
+		}
 	}
 };

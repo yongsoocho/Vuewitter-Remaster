@@ -132,7 +132,7 @@
 	</div>
 	
 	<v-row>
-		<v-col cols="12" xl="3">
+		<v-col cols="12" lg="3">
 			<v-container v-if="!me">
 				<LoginForm></LoginForm>
 			</v-container>
@@ -143,12 +143,12 @@
 				<WhoToFollow></WhoToFollow>
 			</v-container>
 		</v-col>
-		<v-col cols="12" xl="6">
+		<v-col cols="12" lg="6">
 			<v-container>
 				<Nuxt />
 			</v-container>
 		</v-col>
-		<v-col cols="12" xl="3">
+		<v-col cols="12" lg="3">
 			<v-container>
 				<News></News>
 			</v-container>

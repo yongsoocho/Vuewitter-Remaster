@@ -11,5 +11,12 @@ export default {
 	],
 	modules: [
 		'@nuxtjs/axios'
-	]
+	],
+	css: [
+		'~/assets/main.css'
+	],
+	layoutTransition: {
+		name: 'my-layouts',
+		mode: 'out-in'
+	}
 }
