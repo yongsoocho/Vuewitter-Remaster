@@ -7,7 +7,9 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _390dfc94 = () => interopDefault(import('../pages/messages.vue' /* webpackChunkName: "pages/messages" */))
 const _40869203 = () => interopDefault(import('../pages/mypage.vue' /* webpackChunkName: "pages/mypage" */))
 const _5184db40 = () => interopDefault(import('../pages/signup.vue' /* webpackChunkName: "pages/signup" */))
-const _d4fcc230 = () => interopDefault(import('../pages/user/yongsoo.vue' /* webpackChunkName: "pages/user/yongsoo" */))
+const _68b207d6 = () => interopDefault(import('../pages/post/_id/index.vue' /* webpackChunkName: "pages/post/_id/index" */))
+const _18015585 = () => interopDefault(import('../pages/test/_id.vue' /* webpackChunkName: "pages/test/_id" */))
+const _7881f3c1 = () => interopDefault(import('../pages/user/_id/index.vue' /* webpackChunkName: "pages/user/_id/index" */))
 const _3ad351ba = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -34,9 +36,17 @@ export const routerOptions = {
     component: _5184db40,
     name: "signup"
   }, {
-    path: "/user/yongsoo",
-    component: _d4fcc230,
-    name: "user-yongsoo"
+    path: "/post/:id",
+    component: _68b207d6,
+    name: "post-id"
+  }, {
+    path: "/test/:id?",
+    component: _18015585,
+    name: "test-id"
+  }, {
+    path: "/user/:id",
+    component: _7881f3c1,
+    name: "user-id"
   }, {
     path: "/",
     component: _3ad351ba,

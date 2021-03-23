@@ -87,7 +87,8 @@ export default {
 		onEditProfileName() {
 			return console.log('bye');
 		}
-	}
+	},
+	middleware: ['authenticated']
 }
 </script>
 

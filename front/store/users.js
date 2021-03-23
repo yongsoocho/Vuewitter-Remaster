@@ -1,5 +1,9 @@
 export const state = () => ({
-	me: null,
+	me: {
+		email: '123@123.123',
+		password: '123',
+		name: 'C.yongsoo'
+	},
 	FollowersList:[
 		{name:'a', id:1}, 
 		{name:'b', id:2},

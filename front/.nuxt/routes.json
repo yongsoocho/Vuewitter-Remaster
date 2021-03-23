@@ -21,11 +21,25 @@
     "_name": "_5184db40"
   },
   {
-    "name": "user-yongsoo",
-    "path": "/user/yongsoo",
-    "component": "/workspace/Vuewitter-Remaster/front/pages/user/yongsoo.vue",
-    "chunkName": "pages/user/yongsoo",
-    "_name": "_d4fcc230"
+    "name": "post-id",
+    "path": "/post/:id",
+    "component": "/workspace/Vuewitter-Remaster/front/pages/post/_id/index.vue",
+    "chunkName": "pages/post/_id/index",
+    "_name": "_68b207d6"
+  },
+  {
+    "name": "test-id",
+    "path": "/test/:id?",
+    "component": "/workspace/Vuewitter-Remaster/front/pages/test/_id.vue",
+    "chunkName": "pages/test/_id",
+    "_name": "_18015585"
+  },
+  {
+    "name": "user-id",
+    "path": "/user/:id",
+    "component": "/workspace/Vuewitter-Remaster/front/pages/user/_id/index.vue",
+    "chunkName": "pages/user/_id/index",
+    "_name": "_7881f3c1"
   },
   {
     "name": "index",

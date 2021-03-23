@@ -48,9 +48,15 @@
 								>mdi-heart-outline</v-icon>
 					</v-btn>
 					<v-menu
+							min-width="600"
+							max-height="400"
+							max-width="600"
+							v-model="menu"
 							top
-							:close-on-click="true"
-							:close-on-content-click="true"
+							:close-on-click="false"
+							:close-on-content-click="false"
+							offset-y
+							nudge-top="30"
 							>
 						<template v-slot:activator="{ on, attrs }">
 							<v-btn
@@ -63,9 +69,9 @@
 										>mdi-comment-multiple-outline</v-icon>
 							</v-btn>
 						</template>
-						<CommentForm></CommentForm>
+						<CommentForm @onCommentsToggle="menu = false" :post="post"></CommentForm>
 					</v-menu>
-					<v-menu v-if="this.me === this.post.author">	
+					<v-menu v-if="true">	
 						<template v-slot:activator="{ on, attrs }">
 							<v-btn>
 								<v-icon
@@ -77,12 +83,12 @@
 							</v-btn>
 						</template>
 						<v-list>
-							<v-list-item @click="onEditTweet(event)" :style="{ justifyContent:'center' }">
+							<v-list-item @click="onEditTweet()" :style="{ justifyContent:'center' }">
 								<div>					
 									<v-btn dark text color="green">Edit</v-btn>
 								</div>
 							</v-list-item>
-							<v-list-item @click="onDeleteTweet(event)" :style="{ justifyContent:'center' }">
+							<v-list-item @click="onDeleteTweet()" :style="{ justifyContent:'center' }">
 								<div>
 									<v-btn dark text color="red">Delete</v-btn>
 								</div>
@@ -112,7 +118,7 @@ export default {
 	},
 	data(){
 		return{
-			
+			menu:false
 		}
 	},
 	computed: {
@@ -121,7 +127,7 @@ export default {
 		},
 	},
 	methods: {
-		onDeleteTweet(event) {
+		onDeleteTweet() {
 			this.$store.dispatch('posts/removeMainPosts', {
 				id: this.post.id
 			})
