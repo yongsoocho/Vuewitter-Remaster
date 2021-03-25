@@ -18,5 +18,8 @@ export default {
 	layoutTransition: {
 		name: 'my-layouts',
 		mode: 'out-in'
+	},
+	axios: {
+		baseURL: 'https://vuewitter-remaster-123.run.goorm.io:8000'
 	}
 }

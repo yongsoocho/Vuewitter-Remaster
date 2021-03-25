@@ -40,7 +40,12 @@ export const mutations = {
 };
 
 export const actions = {
-	signUp({ commit }, payload) {			// signUp(context, payload) context : { commit, dispatch, getters, rootGetters, rootState, state }
+	signUp({ commit }, payload) {	// signUp(context, payload) context : { commit, dispatch, getters, rootGetters, rootState, state }
+		this.$axios.post(`/user`, {
+			email:payload.email,
+			name:payload.name,
+			password:payload.password
+		});
 		commit('SETME', payload);
 	},
 	logIn({ commit }, payload) {
