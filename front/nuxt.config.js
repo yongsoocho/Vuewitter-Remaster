@@ -20,6 +20,8 @@ export default {
 		mode: 'out-in'
 	},
 	axios: {
-		baseURL: 'https://vuewitter-remaster-123.run.goorm.io:8000'
+		https: false,
+		baseURL:'https://vuewitterexpressmongo.run.goorm.io',
+		browserBaseURL:'https://vuewitterexpressmongo.run.goorm.io',
 	}
 }

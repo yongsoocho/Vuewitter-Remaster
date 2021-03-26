@@ -1,8 +1,8 @@
 export const state = () => ({
 	me: {
-		email: '123@123.123',
-		password: '123',
-		name: 'C.yongsoo'
+		email: '',
+		password: '',
+		name: ''
 	},
 	FollowersList:[],
 	FollowingList:[],
@@ -38,17 +38,25 @@ export const mutations = {
 		state.hasMoreFollowing = fakeFollow.length === limit;
 	},
 };
-
+// signUp(context, payload) context : { commit, dispatch, getters, rootGetters, rootState, state }
 export const actions = {
-	signUp({ commit }, payload) {	// signUp(context, payload) context : { commit, dispatch, getters, rootGetters, rootState, state }
-		this.$axios.post(`/user`, {
-			email:payload.email,
-			name:payload.name,
-			password:payload.password
+	signUp({ commit }, payload) {
+		this.$axios.post('/user', {
+			email: payload.email,
+			password: payload.password,
+			name: payload.name,
+		}).then(() => {
+			console.log('signUp axios succes');
+		}).catch((err) => {
+			console.log(err);
 		});
 		commit('SETME', payload);
 	},
 	logIn({ commit }, payload) {
+		this.$axios.post('/user/login', {
+			email: payload.email,
+			password: payload.password,
+		});
 		commit('SETME', payload);
 	},
 	logOut({ commit }, payload) {

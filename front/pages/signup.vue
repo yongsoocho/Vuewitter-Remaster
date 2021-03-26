@@ -23,12 +23,14 @@
 							  v-model="password"
 							  clearable
 							  label="password"
+							  type="password"
 							  :rules="passwordRules"
 							  ></v-text-field>
 				<v-text-field
 							  v-model="passwordCheck"
 							  clearable
 							  label="password check"
+							  type="password"
 							  :rules="passwordCheckRules"
 							  ></v-text-field>
 				<v-checkbox
@@ -88,13 +90,14 @@ export default {
 					password: this.password
 				})
 				.then(() => {
-					this.$router.push({
+					console.log('success methods');
+					this.$refs.form.reset();
+					return this.$router.push({
 						path:'/'
 					});
-					this.$refs.form.reset();
 				})
 				.catch((err) => {
-					console.log(err);
+					return console.log(err);
 				});
 			}else{
 				this.$refs.form.reset();

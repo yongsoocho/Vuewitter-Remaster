@@ -8,9 +8,18 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
-sequelize = new Sequelize(config.database, config.username, config.password, {
+const sequelize = new Sequelize('vuewitter', 'root', '0302', {
 	host:'127.0.0.1',
-	dialect:'mysql'
+	dialect:'mysql',
+	port:'3306'
+});
+
+sequelize.authenticate()
+	.then(() => {
+	console.log('Connection has been established successfully.');
+})
+	.catch((err) => {
+	console.log(err);
 });
 
 db.User = require('./user')(sequelize, Sequelize);
