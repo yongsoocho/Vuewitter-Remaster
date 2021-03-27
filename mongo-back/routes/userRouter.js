@@ -21,27 +21,68 @@ userRouter.post('/', async (req, res, next) => {
 				name: req.body.name,
 				password: hash,
 			});
-			return res.status(201).json({
-				message:'signUp success!'
-			});
+			passport.authenticate('local', (err, user, info) => {	// done(err, success == user, { msg == info })
+				if(err){
+					console.log(err);
+					return next(err);
+				}
+				if(info){
+					return res.status(401).send(info.message);
+				}
+				return req.login(user, async (err) => {	// login(user, session)
+					try{
+						if(err){
+							console.log(err);
+							return next(err);
+						}
+						return res.json(user);
+					}catch(err){
+						console.log(err);
+						return next(err);
+					}
+				});
+			})(req, res, next);
 		}
-		res.status(201).json(newUser);
 	}catch(err){
 		console.log(err);
 		next(err);
 	}
 });
 
-userRouter.post('/login', async (req, res, next) => {
+userRouter.post('/login', async (req, res, next) => {	// passport.authenticate('Strategy', {}) 
 	try{
-		passport.authenticate('local', {
-			failureRedirect: '/',
-			successRedirect: '/'
-		});
-		return res.status(200).json();
+		passport.authenticate('local', (err, user, info) => {	// done(err, success == user, { msg == info })
+			if(err){
+				console.log(err);
+				return next(err);
+			}
+			if(info){
+				return res.status(401).send(info.message);
+			}
+			return req.login(user, async (err) => {	// login(user, session)
+				try{
+					if(err){
+						console.log(err);
+						return next(err);
+					}
+					return res.json(user);
+				}catch(err){
+					console.log(err);
+					return next(err);
+				}
+			});
+		})(req, res, next);
 	}catch(err){
 		console.log(err);
 		return next(err);
+	}
+});
+
+userRouter.post('/logout', async (req, res, next) => {
+	if(req.isAuthenticated()){
+		req.logout();
+		req.session.destroy();
+		return res.status(200).send('logout success');
 	}
 });
 

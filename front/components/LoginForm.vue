@@ -1,6 +1,6 @@
 <template>
 <v-card>
-	<v-form ref="form" v-model="valid" @submit.prevent="onLogIn">
+	<v-form ref="form" v-model="valid" @submit.prevent.once="onLogIn">
 		<v-container>
 			<v-text-field
 						  label="e-mail"

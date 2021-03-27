@@ -1,9 +1,5 @@
 export const state = () => ({
-	me: {
-		email: '',
-		password: '',
-		name: ''
-	},
+	me:{},
 	FollowersList:[],
 	FollowingList:[],
 	hasMoreFollowers: true,
@@ -17,7 +13,6 @@ const limit = 3;
 export const mutations = {
 	SETME(state, payload) {
 		state.me = payload;
-		console.log(state.me);
 	},
 	LOADFOLLOWERS(state, payload) {
 		const diff = totalFollowers - state.FollowersList.length;
@@ -45,22 +40,44 @@ export const actions = {
 			email: payload.email,
 			password: payload.password,
 			name: payload.name,
-		}).then(() => {
+		}, {
+			withCredentials: true,
+		})
+		.then((res) => {
 			console.log('signUp axios succes');
-		}).catch((err) => {
+			console.log(res);
+			commit('SETME', res.data);
+		})
+		.catch((err) => {
 			console.log(err);
 		});
-		commit('SETME', payload);
 	},
 	logIn({ commit }, payload) {
 		this.$axios.post('/user/login', {
 			email: payload.email,
 			password: payload.password,
+		}, {
+			withCredentials: true,
+		})
+		.then((res) => {
+			console.log('logIn axios success');
+			console.log(res);
+			commit('SETME', res.data);
+		})
+		.catch((err) => {
+			console.log(err);
 		});
-		commit('SETME', payload);
 	},
 	logOut({ commit }, payload) {
-		commit('SETME', null);
+		this.$axios.post('/user/logout', {}, {
+			withCredentials: true
+		})
+		.then(() => {
+			commit('SETME', null);
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 	},
 	loadFollowers({ commit, state }, payload) {
 		if(state.hasMoreFollowers) {

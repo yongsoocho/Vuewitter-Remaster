@@ -13,17 +13,24 @@ const app = express();
 db();
 passportConfig();
 
-app.use(cors(`https://vuewitter-remaster-ftixr.run.goorm.io:3000`)); // cors() == all requests are allowed , input front-server
+app.use(cors({
+	origin:"https://vuewitter-remaster-ftixr.run.goorm.io",
+	credentials: true,
+})); // cors() == all requests are allowed , input front-server
 app.use(express.json()); // express.json let server read json file
 app.use(express.urlencoded({ extended: false })); // like body-parser
 app.use(morgan('combined'));
-app.use(session({
-	secret: 'yong', 
-	resave: false, 
-	saveUninitialized: false
-}));
 app.use(cookie('yong'));
-app.use(passport.initialize());
+app.use(session({
+	resave: false,
+	saveUninitialized: false,
+	secret: 'cookiesecret',
+	cookie: {
+		httpOnly: true,
+		secure: false,
+	},
+}));
+app.use(passport.initialize());	// req.login and req.logout is added
 app.use(passport.session());
 
 app.use('/user', userRouter);
