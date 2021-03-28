@@ -15,9 +15,13 @@
 					   fab
 					   outlined
 					   :style="{ margin:'0px 20px' }"
+					   @click="onClickImgUpload"
+					   type="button"
 					   >
 					<v-icon>mdi-image-multiple-outline</v-icon>
+					<!-- except submit button, button where is in form should be added type="button" because, auto submit -->
 				</v-btn>
+				<input ref="imageInput" type="file" multiple hidden @change="onChangeImages"/>
 			</v-card-title>
 
 			<v-container>
@@ -39,10 +43,26 @@
 					   outlined
 					   :style="{ marginBottom:'10px' }"
 					   type="submit"
+					   @click="onClickTweet"
 					   >
 					Tweet
 				</v-btn>
 			</v-card-actions>
+			<v-container>
+				<div v-for="(img, i) in imagePaths" :key="img" :style="{ display:'inline-block' }">
+					<v-container>
+						<v-img
+							   :src="`https://vuewitterexpressmongo.run.goorm.io/${img}`"
+							   :alt="img"
+							   :style="{ display:'inline-block', width:'200px', position:'relative' }"/>
+						<v-btn
+							   icon
+							   dark
+							   color="red"
+							   @click="onClickImgRemove(i)"><v-icon>mdi-minus</v-icon></v-btn>
+					</v-container>
+				</div>
+			</v-container>
 		</v-card>
 	</v-form>
 </div>
@@ -63,14 +83,13 @@ export default {
 		onPostTweet() {
 			if(this.$refs.form.validate()){
 				this.$store.dispatch('posts/addMainPosts', {
-					id: Math.round(Math.random()*10000),
 					content: this.content,
 					author: this.me,
-					image:{},
-					createAt: new Date(),
-					updateAt: new Date(),
 				})
 				.then(() => {
+					console.log('post tweet!');
+					console.log(this.content);
+					console.log(this.me);
 					this.$refs.form.reset();
 				})
 				.catch((err) => {
@@ -79,12 +98,30 @@ export default {
 			}else{
 				this.$refs.form.reset();
 			}
-		}
+		},
+		onClickImgUpload() {
+			return this.$refs.imageInput.click();
+		},
+		onChangeImages(event) {
+			console.log(event.target.files);
+			const imageFormData = new FormData();
+			[].forEach.call(event.target.files, (f) => {
+				imageFormData.append('image', f)
+			});
+			console.log(imageFormData);
+			return this.$store.dispatch('posts/uploadImages', imageFormData);
+		},
+		onClickImgRemove(index) {
+			return this.$store.commit('posts/REMOVEIMGPATHS', index);
+		},
 	},
 	computed: {
 		me() {
 			return this.$store.state.users.me;
 		},
+		imagePaths() {
+			return this.$store.state.posts.imagePaths;
+		}
 	}
 }
 </script>

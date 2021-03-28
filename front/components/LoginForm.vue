@@ -1,6 +1,6 @@
 <template>
 <v-card>
-	<v-form ref="form" v-model="valid" @submit.prevent.once="onLogIn">
+	<v-form ref="form" v-model="valid" @submit.prevent="onLogIn">
 		<v-container>
 			<v-text-field
 						  label="e-mail"
@@ -28,7 +28,6 @@
 					   color="blue lighten-1"
 					   :style="{ width:'100%', margin:'5px 0px' }"
 					   type="submit"
-					   @click="onLogIn"
 					   >Log in</v-btn>
 
 				<v-btn
@@ -67,6 +66,7 @@ export default {
 					password: this.password,
 				})
 				.then(() => {
+					console.log('Login methods success!');
 					this.$router.push({
 						path:'/'
 					});

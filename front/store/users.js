@@ -1,5 +1,5 @@
 export const state = () => ({
-	me:{},
+	me:null,
 	FollowersList:[],
 	FollowingList:[],
 	hasMoreFollowers: true,

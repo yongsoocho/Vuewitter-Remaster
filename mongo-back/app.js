@@ -1,7 +1,9 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const db = require('./models');
 const userRouter = require('./routes/userRouter');
+const postRouter = require('./routes/postRouter');
 const morgan = require('morgan');
 const passportConfig = require('./passport');
 const passport = require('passport');
@@ -30,9 +32,12 @@ app.use(session({
 		secure: false,
 	},
 }));
+app.use(express.static('uploads'));
 app.use(passport.initialize());	// req.login and req.logout is added
 app.use(passport.session());
 
+//routes
+app.use('/post', postRouter);
 app.use('/user', userRouter);
 
 app.listen(8000, () => {

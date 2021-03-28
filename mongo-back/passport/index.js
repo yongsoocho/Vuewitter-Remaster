@@ -11,11 +11,13 @@ const local = require('./local');
 
 module.exports = () => {	// when called req.login is called to respond to session
 	passport.serializeUser((user, done) => {
+		console.log('serializeUser on');
 		return done(null, user.email);
 	});
 	
 	passport.deserializeUser(async (email, done) => {
 		try{
+			console.log('deserializeUser on');
 			const user = await User.findOne({	// caching is required
 				email:email
 			});
