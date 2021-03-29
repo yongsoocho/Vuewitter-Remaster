@@ -15,6 +15,7 @@ import { createStore } from './store.js'
 
 import nuxt_plugin_plugin_11dc7c20 from 'nuxt_plugin_plugin_11dc7c20' // Source: ./vuetify/plugin.js (mode: 'all')
 import nuxt_plugin_axios_c204dab8 from 'nuxt_plugin_axios_c204dab8' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_moment_4f605374 from 'nuxt_plugin_moment_4f605374' // Source: ./moment.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -78,7 +79,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"Vuewitter-Remaster","meta":[],"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
+    head: {"title":"Vuewitter-Remaster","meta":[{"name":"description","content":"yong.s testing twitter"},{"name":"og:title","content":"Vuewitter"},{"name":"og:image","content":"Url"}],"link":[{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
 
     store,
     router,
@@ -213,6 +214,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_axios_c204dab8 === 'function') {
     await nuxt_plugin_axios_c204dab8(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_moment_4f605374 === 'function') {
+    await nuxt_plugin_moment_4f605374(app.context, inject)
   }
 
   // Lock enablePreview in context

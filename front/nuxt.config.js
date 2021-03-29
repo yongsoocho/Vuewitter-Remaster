@@ -17,7 +17,7 @@ export default {
 	},
 	buildModules: [
 		'@nuxtjs/vuetify',
-		'@nuxtjs/momnet'
+		'@nuxtjs/moment'
 	],
 	moment: {
 		// locales: ['ko'],
@@ -27,7 +27,7 @@ export default {
 	],
 	build: {
 		analyze: true,
-		extend(config, { isClient, isServer }) {
+		extend(config, { isClient, isServer, isDev }) {
 			if(isServer && !isDev) {
 				config.devtool = 'hidden-source-map';
 			}
