@@ -20,7 +20,7 @@
 			</span>
 		</v-card-title>
 		<v-card-subtitle>
-			{{post.createAt}}
+			{{$moment(post.createAd).fromNow()}}
 		</v-card-subtitle>
 		
 		<v-container>

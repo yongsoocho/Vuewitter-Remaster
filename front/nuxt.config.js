@@ -4,14 +4,37 @@ export default {
 		host:'0.0.0.0'
 	},
 	head:{
-		title:'Vuewitter-Remaster'
+		title:'Vuewitter-Remaster',
+		meta: [{
+			name: 'description',
+			content: 'yong.s testing twitter',
+		}, {
+			name: 'og:title',
+			content: 'Vuewitter'
+		}, {
+			name: 'og:image',
+			content: 'Url'
+		}]
 	},
 	buildModules: [
-		'@nuxtjs/vuetify'
+		'@nuxtjs/vuetify',
+		'@nuxtjs/momnet'
 	],
+	moment: {
+		// locales: ['ko'],
+	},
 	modules: [
 		'@nuxtjs/axios'
 	],
+	build: {
+		analyze: true,
+		extend(config, { isClient, isServer }) {
+			if(isServer && !isDev) {
+				config.devtool = 'hidden-source-map';
+			}
+			console.log('webpack', config, isServer, isClient);
+		}
+	},
 	css: [
 		'~/assets/main.css'
 	],
