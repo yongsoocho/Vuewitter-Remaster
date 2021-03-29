@@ -1,0 +1,27 @@
+{
+  "entry": "server.js",
+  "files": {
+    "pages/hashtag/_id/index.js": "pages/hashtag/_id/index.js",
+    "pages/index.js": "pages/index.js",
+    "pages/messages.js": "pages/messages.js",
+    "pages/mypage.js": "pages/mypage.js",
+    "pages/post/_id/index.js": "pages/post/_id/index.js",
+    "pages/signup.js": "pages/signup.js",
+    "pages/test/_id.js": "pages/test/_id.js",
+    "pages/test/_id/index.js": "pages/test/_id/index.js",
+    "pages/user/_id/index.js": "pages/user/_id/index.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "pages/hashtag/_id/index.js": "pages/hashtag/_id/index.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "pages/messages.js": "pages/messages.js.map",
+    "pages/mypage.js": "pages/mypage.js.map",
+    "pages/post/_id/index.js": "pages/post/_id/index.js.map",
+    "pages/signup.js": "pages/signup.js.map",
+    "pages/test/_id.js": "pages/test/_id.js.map",
+    "pages/test/_id/index.js": "pages/test/_id/index.js.map",
+    "pages/user/_id/index.js": "pages/user/_id/index.js.map",
+    "server.js": "server.js.map"
+  }
+}
